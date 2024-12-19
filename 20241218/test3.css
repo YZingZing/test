@@ -1,0 +1,17 @@
+/* a:hover{
+    color: rgb(3, 199, 90);
+} */
+
+div:hover{
+    cursor: pointer;
+    color: red;
+}
+
+a:active{
+    color: rgb(3, 199, 90);
+}
+
+input:focus{
+    background-color: orange;
+    color: red;
+}

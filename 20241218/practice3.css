@@ -1,0 +1,36 @@
+h1:hover{
+    color: red;
+}
+
+a:hover{
+    color: blue;
+    background-color: black;
+}
+
+a:active{
+    background-color: blue;
+}
+
+input:focus{
+    background-color: orange;
+}
+
+.one{
+    color:blue;
+}
+
+.two{
+    color: red;
+}
+
+.one:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.two:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+

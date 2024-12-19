@@ -1,0 +1,50 @@
+body{
+    color: white;
+    background-color: gray;
+}
+
+span{
+    background-color: red;
+}
+
+/* 클래스 불러오기 */
+.second{
+    background-color: green;
+}
+
+/* 아이디 불러오기기 */
+#first{
+    background-color: blue;
+}
+
+div{
+    float: left;
+}
+
+.one{
+    color: red;
+}
+
+.two{
+    color: orange;
+}
+
+.three{
+    color: yellow;
+}
+
+.four{
+    color: green;
+}
+
+.five{
+    color: blue;
+}
+
+.six{
+    color: navy;
+}
+
+.seven{
+    color: purple;
+}
