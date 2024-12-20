@@ -1,0 +1,40 @@
+.stripes *:nth-child(3n){
+    background-color: yellow;
+}
+
+.stripes *:nth-child(3n+1){
+    background-color: red;
+}
+
+.stripes *:nth-child(3n+2){
+    background-color: orange;
+}
+
+.box::before{
+    content: "택시";
+    color: red;
+}
+
+.box::after{
+    content: "빨리";
+    color: blue;
+}
+
+.box{
+    color: orange;
+}
+
+[disabled]{
+    background-color: red;
+}
+
+[type="password"]{
+    background-color: blue;
+}
+[value="000-0000-0000"]{
+    background-color: blue;
+}
+
+[placeholder="이름"]{
+    background-color: orange;
+}

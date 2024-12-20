@@ -1,0 +1,36 @@
+.test{
+    font-family: "Playwrite ES Deco Guides", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.box{
+    width: 100%;
+}
+
+/* max-width는 화면이 아무리 늘어나도 최대 크기 설정
+display: flex는 수직으로 된 것을 수평으로 한줄 표시
+margin: 0px auto는 화면을 늘려도 정 가운데 유지
+justify-content: space-between은 같은 넓이만큼 간격유지 */
+.boxWrap{
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px auto;
+}
+
+/* width 100%라면 자동으로 화면 꽉 차게 */
+.red{
+    width: 100%;
+    background-color: red;
+}
+
+.blue{
+    width: 100%;
+    background-color: blue;
+}
+
+.black{
+    width: 100%;
+    background-color: black;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet", href="./practice4.css" />
+
+    <!-- 폰트 가져오기기 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <div class="boxWrap">
+        <!-- 첫번째 박스 (제목) -->
+        <div class="box1"><b>설문조사</b></div>
+
+        <!-- 두번째 박스 (이름과 이메일) -->
+        <div class="box2">
+            이름<br />
+            <input placeholder="오올이" type="text" onfocus="this.placeholder=''" onblur="this.placeholder='오올이'" /><br />
+            이메일<br />
+            <input placeholder="CodingOn@ex.com" type="text" onfocus="this.placeholder=''" onblur="this.placeholder='CodingOn@ex.com'" /><br />
+        </div>
+
+        <!-- 세번째 박스 (나이 선택) -->
+        <div class="box3">나이<br />
+            <hr />
+            <input type="radio" name="age" value="10대" checked>10대</input><br />
+            <input type="radio" name="age" value="20대">20대</input><br />
+            <input type="radio" name="age" value="30대">30대</input><br />
+            <input type="radio" name="age" value="40대">40대</input><br />
+            <input type="radio" name="age" value="50대">50대</input><br />
+            <input type="radio" name="age" value="60대이상">60대 이상</input><br />
+        </div>
+
+        <!-- 일곱번째 박스 (카테고리) -->
+        <div class="box7">설문조사 카테고리<br />
+            <hr />
+            <select name="filedname" id="filed">
+                <option value="social">사회</option>
+                <option value="economy">경제</option>
+                <option value="sports">스포츠</option>
+                <option value="fun">예능</option>
+                <option value="animal">동물</option>        
+            </select><br />
+        </div>
+
+        <!-- 네번째 박스 (강의 선택) -->
+         <div class="box4">원하는 강의(복수응답 가능합니다.)<br />
+            <hr />
+            <input type="checkbox" checked>html</input><br />
+            <input type="checkbox">javascript</input><br />
+            <input type="checkbox">css</input><br /><br />
+         </div>
+
+        <!-- 다섯번째 박스 (자유 입력란) -->
+        <div class="box5">
+            <textarea placeholder="하고 싶은 말을 써주세요:)" style="width:600px; height:100px;"></textarea><br />
+        </div>
+
+        <!-- 여섯번째 박스 (제출버튼) -->
+        <div class="box6">
+            <input type="button" value="제출" /><br />
+        </div>
+    </div>
+    
+    
+</body>
+</html>

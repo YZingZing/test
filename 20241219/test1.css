@@ -1,0 +1,45 @@
+/* 처음 */
+.fruits :first-child{
+    color: red;
+}
+
+/* 마지막 */
+.fruits h3:last-child{
+    color: blue;
+}
+
+/* 중간 */
+.fruits *:nth-child(2){
+    color: purple;
+}
+.fruits *:nth-child(2n){
+    color: orange;
+}
+.fruits *:nth-child(2n+1){
+    color: yellow;
+}
+
+/* 부정 */
+.fruits *:not(span){
+    color: sienna;
+}
+
+/* 가상요소 삽입 */
+.box::before{
+    content: "앞!";
+}
+.box::after{
+    content: "뒤!";
+}
+
+[disabled]{
+    color: red;
+}
+
+[type="password"]{
+    color: blue;
+}
+
+[value="HEROPY"]{
+    color: purple;
+}

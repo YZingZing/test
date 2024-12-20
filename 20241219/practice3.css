@@ -1,0 +1,19 @@
+.boxWrap{
+    width: auto;
+    height: 200px;
+    display: flex;
+    background-color: beige;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

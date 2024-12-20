@@ -1,0 +1,14 @@
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: beige;
+    /* 전방향 선 그리기기*/
+    /* border: 1px solid red; */
+    border-radius: 10px 50px;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
