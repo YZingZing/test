@@ -1,0 +1,275 @@
+/* 지렁이 만들기 */
+.container{
+    width: 600px;
+    height: 600px;
+    background-color: beige;
+    position: relative;
+}
+
+/* 몸통 */
+.item1{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+}
+
+.item2{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: orange;
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    z-index: 1;
+}
+
+.item3{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: yellow;    
+    position: absolute;
+    top: 140px;
+    left: 150px;
+}
+
+.item4{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: green;
+    position: absolute;
+    top: 160px;
+    left: 200px;
+    z-index: 1;
+}
+
+.item5{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: navy;
+    position: absolute;
+    top: 190px;
+    left: 250px;
+}
+
+.item6{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: purple;
+    position: absolute;
+    top: 160px;
+    left: 300px;
+    z-index: 1;
+}
+
+/* 꼬리 */
+.item7{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    position: absolute;
+    top: 160px;
+    right: 210px;
+}
+
+.item8{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: orange;
+    position: absolute;
+    top: 150px;
+    right: 195px;
+    z-index: 1;
+}
+
+.item9{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: yellow;    
+    position: absolute;
+    top: 140px;
+    right: 180px;
+}
+
+.item10{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: green;
+    position: absolute;
+    top: 130px;
+    right: 165px;
+}
+
+/* 다리 */
+.item11{
+    width: 15px;
+    height: 60px;
+    background-color: black;
+    position: absolute;
+    top: 160px;
+    left: 130px;
+}
+.item12{
+    width: 15px;
+    height: 60px;
+    background-color: black;
+    position: absolute;
+    top: 180px;
+    left: 180px;
+}
+.item13{
+    width: 15px;
+    height: 60px;
+    background-color: black;
+    position: absolute;
+    top: 200px;
+    left: 230px;
+}
+
+.item14{
+    width: 15px;
+    height: 60px;
+    background-color: black;
+    position: absolute;
+    top: 230px;
+    left: 280px;
+}
+
+/* 눈 */
+.item15{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 110px;
+    left: 60px;
+}
+
+.item16{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 140px;
+    left: 110px;
+    z-index: 2;
+}
+
+.item17{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 160px;
+    left: 175px;
+}
+
+.item18{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 165px;
+    left: 225px;
+    z-index: 2;
+}
+
+.item19{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 218px;
+    left: 275px;
+}
+
+.item20{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    top: 183px;
+    left: 325px;
+    z-index: 2;
+}
+
+.item15-2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 117px;
+    left: 60px;
+} 
+
+.item16-2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 140px;
+    left: 117px;
+    z-index: 3;
+} 
+
+.item17-2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 177px;
+    left: 182px;
+}
+
+.item18-2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 164px;
+    left: 232px;
+    z-index: 3;
+}
+
+.item19-2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 230px;
+    left: 288px;
+}
+
+.item20-2{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 187px;
+    left: 340px;
+    z-index: 3;
+}

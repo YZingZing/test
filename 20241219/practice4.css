@@ -1,11 +1,9 @@
 .boxWrap{
-    /* 폰트설정정 */
+    /* 폰트설정 */
     font-family: "Noto Sans KR", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-
-    background-color: rgb(232, 212, 232);
     display: flex;
     flex-direction: column;   /* 수직 정렬 */
     justify-content: space-between;  /* 요소 간 간격 */
@@ -13,9 +11,14 @@
     height: calc(100% - 30px);  /* 전체 높이에서 간격 보정 */
 }
 
+body{
+    background-color: rgb(232, 212, 232);
+}
+
 
 /* 제목 */
 .box1{
+    padding: 10px;
     margin-bottom: 30px;
     width: 600px;
     height: 70px;
@@ -35,6 +38,7 @@
 }
 
 .box2{
+    padding: 10px;
     margin-bottom: 30px;
     width: 600px;
     height: 100px;
@@ -49,9 +53,10 @@
 }
 
 .box7{
+    padding: 10px;
     margin-bottom: 30px;
     width: 600px;
-    height: 80px;
+    height: 70px;
     background-color: white;
     border-radius: 3%;
 }
@@ -68,9 +73,10 @@
 }
 
 .box3{
+    padding: 10px;
     margin-bottom: 30px;
     width: 600px;
-    height: 250px;
+    height: 230px;
     background-color: white;
     border-radius: 3%;
 }
@@ -87,9 +93,10 @@
 }
 
 .box4{
+    padding: 10px;
     margin-bottom: 30px;
     width: 600px;
-    height: 150px;
+    height: 130px;
     background-color: white;
     border-radius: 3%;
 }
@@ -108,8 +115,11 @@
     opacity: 0.5;
 }
 
-.box6{
-    margin-bottom: 30px;
-    /* text-align: right; */
+.type:hover{
+    cursor: pointer;
+
 }
 
+.box6{
+    margin-bottom: 30px;
+}
