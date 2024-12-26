@@ -1,0 +1,75 @@
+<!-- 부트스트랩 사용해보기 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./test.css" />
+    <!-- CDN으로 포함시키기 두개 가져오기 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="bodyWrap">
+        <select class="form-select" size="1" aria-label="Multiple select example" onChange="location.href=this.value">
+            <option selected>Open this select menu</option>
+            <option value="http://127.0.0.1:5500/20241217/a1.html">아메리카노</option>
+            <option value="http://127.0.0.1:5500/20241217/a2.html">돌체라떼</option>
+            <option value="http://127.0.0.1:5500/20241217/a3.html">자바칩 프라푸치노</option>
+            <option value="http://127.0.0.1:5500/20241217/a4.html">녹차 프라푸치노</option>
+          </select><br />
+
+        <table class="table table-bordered" cellpadding="10">
+            <thead class="table-dark">
+                <tr>
+                    <td>구분</td>
+                    <td>음료</td>
+                    <td>가격</td>
+                    <td>이미지</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">커피류</td>
+        
+                    <!-- 첫번째 음료 -->
+                    <td>아메리카노</td>
+                    <td>4200원</td>
+                    <td><a href="http://127.0.0.1:5500/20241217/a1.html" target="_blank">
+                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[110563]_20210426095937947.jpg" alt="사진1" width="100"/></a>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- 두번째 음료 -->
+                    <td>돌체라떼</td>
+                    <td>4800원</td>
+                    <td><a href="http://127.0.0.1:5500/20241217/a2.html" target="_blank">
+                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[128692]_20210426091933798.jpg" alt="사진2" width="100"/></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="2">주스류</td>
+                    
+                    <!-- 세번째 음료 -->
+                    <td>자바칩 프라푸치노</td>
+                    <td rowspan="2">5000원</td>
+                    <td><a href="http://127.0.0.1:5500/20241217/a3.html" target="_blank">
+                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[168016]_20210415154152277.jpg" alt="사진3" width="100"/></a>
+                    </td>
+                </tr>
+                <tr>
+                    <!-- 네번째 음료 -->
+                    <td>녹차 프라푸치노</td>
+                    <td><a href="http://127.0.0.1:5500/20241217/a4.html" target="_blank">
+                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[9200000002502]_20210426100408183.jpg" alt="사진4" width="100"/></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary" disabled>주문하기</button>
+    </div>
+
+
+</body>
+</html>

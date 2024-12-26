@@ -1,0 +1,14 @@
+/* 화면 가운데 오게 만드는 조건 */
+.bodyWrap{
+    max-width: 1280px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    background-color: beige;
+    flex-direction: column  /* 요소들을 위에서 아래로 정렬 */
+}
+
+.table{
+    text-align: center;
+}

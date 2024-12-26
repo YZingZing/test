@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let colors = ["red", "orange", "yellow", "green", "blue","purple", "black"];
+        // 인덱스 2인값 출력
+        console.log(colors[2]);
+
+        // 좋아하는 색 마지막 추가
+        colors.push("pink");
+        console.log(colors);
+
+        // black이 몇번쨰 인덱스에 있는지 출력
+        console.log(colors.indexOf("black"));
+
+        // 리스트 순서 반전시켜 출력
+        colors.reverse();
+        console.log(colors);
+
+        // 자기소개 하기
+        const _data = {
+            name: "김예지",
+            age: 24,
+            like: "빵"
+        }
+        console.log(_data);
+        console.log(`안녕하세요. 제 이름은 ${_data.name}입니다. 저는 ${_data.age}살 이구요, 좋아하는 것은 ${_data.like}입니다. 감사합니다.`);
+
+        
+        // let name = "뽀로로";
+        // let age = 18;       
+        
+        // or 연산자 
+        // if(name === "뽀로로" || age > 19) {
+        // console.log("통과");
+        // } else {
+        // console.log("돌아가");
+        // }
+
+        // and 연산자
+        // if(name === "뽀로로" && age >19)
+
+        // not 연산자
+        let age = 16;
+        let isAdult = age > 19; // false
+        if(!isAdult) {
+        console.log("돌아가");
+        } else {
+        console.log("통과");
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+
+
+</html>

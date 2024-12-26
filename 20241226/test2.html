@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var는 재선언 재할당 모두 가능 > 거의 안씀씀
+        // let은 재선언 불가능, 재할당 가능
+        // const는 재선언 재할당 모두 불가능
+
+
+        // 백팁문자 사용해 문자+변수 동시 출력하기
+        const a = "안녕";
+        console.log(`${a}하세요`);
+
+
+        let arr = ["red", "orange", "yellow", "green", "black", "purple"];
+        arr.push("안녕");
+        console.log(arr);
+
+        const bike = "adsfwerq";
+        console.log(bike.length);
+
+        let colors = ["red", "orange", "yellow", "green", "black", "purple"];
+        let str = "redorange";
+        console.log(str.indexOf("d"));
+        console.log(colors.includes("black"));
+
+        
+        const _data = {
+            name: "철수",
+            age: 10,
+            like: "책"
+        };
+        console.log(`안녕하세요. 제 이름은 ${_data.name}입니다. 저는 ${_data.age}살 이구요, 좋아하는 것은 ${_data.like}입니다. 감사합니다.`);
+
+        // 타입 알려주기
+        const ex = "asdf"
+        const ex2 = 2025
+        console.log(typeof ex);
+
+        // prompt로 받으면 무조건 string형!
+        let mathScore = prompt("수학 점수를 입력하세요.");
+        let engSocore = prompt("영어 점수를 입력하세요.");
+        let avgScore = (Number(mathScore) + Number(engSocore)) / 2;
+
+        console.log(avgScore, "평균");
+    </script>
+</head>
+<body>
+
+</body>
+
+
+</html>
