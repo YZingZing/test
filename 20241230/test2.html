@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        while(true){ // 무한루프
+            let number = Number(prompt("어떤 게임을 할 지 골라주세요. 1) 묵찌빠 2) 딱지치기 3) 무궁화꽃이피었습니다. 0) 종료"));
+            if(number === 0) break;
+            else console.log(number, "번 게임을 선택하셨습니다.")
+        }
+
+        // 한번은 무조건 do 안의 구문 실행
+        let j=10;
+        do{
+            console.log(j, "번째 안녕하세요.")
+            j++;
+        } while(j<10)
+
+        for(let i=1; i<=10; i++){
+            if(i%3===0) break;
+            console.log("break 확인:", i)
+        }
+
+        const fruits = ["apple", "banana", "grape", "melon"];
+        for(const fru of fruits){
+            console.log("for-of문", fru)
+        }
+
+        // for in 연습
+        const obj = { a: 1, b: 2, c: 3 };
+        for (const prop in obj) {
+        console.log(`obj.${prop} = ${obj[prop]}`);
+        }
+
+    </script>
+</body>
+</html>

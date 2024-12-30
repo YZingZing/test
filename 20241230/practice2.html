@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script>
+        // 10000까지의 숫자 중에서, 13의 배수와 홀수인 숫자 출력
+        for(let i=0; i<10000; i++){
+            if((i%13 === 0) && (i%2 === 1)){
+                console.log(i);
+            }
+        }
+
+        // prompt 이용해 입력받은 수까지 3의 배수와 홀수인 숫자 출력
+        let max = prompt("숫자를 입력해주세요");
+        
+        for(let i=0; i<max; i++){
+            if((i%13 === 0) && (i%2 === 1)){
+                console.log(i);
+            }
+        }        
+    </script>
+
+    <script>
+        // 구구단 만들기
+        for(let num=2; num<10; num++){
+            console.log(`---${num}단---`)
+            for(let i=1; i<=9; i++){
+                let div = num * i;
+                console.log(`${num} x ${i} = ${div}`) 
+                // console.log(num, "x", i, "=", num*i)로 적어도 됨!
+            }
+        }
+    </script> -->
+
+    <script>
+        let i=0, sum=0, sum2=0;
+        while(i<100){
+            if((i%2===0) || (i%3===0)){
+                sum += i;
+            }
+            i++
+        }
+        console.log(sum)
+
+        for(let n=0; n<100; n++){
+            if((n%2===0) || (n%3===0)){
+                sum2 += n;
+            }
+        }
+        console.log(sum2)
+
+    </script>
+</body>
+</html>

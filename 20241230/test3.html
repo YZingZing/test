@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'Happy day~ ';
+        console.log(str.length) // 12
+        console.log(str.toUpperCase()) // 모두 대문자로 변경
+        console.log(str.indexOf('p')) // 2
+        console.log(str.slice(startIdx(1,4))) // startIdx 포함하지만 endIdx는 포함 x
+        console.log(str.replace("p", "a"))
+        console.log(str.trim()) // 앞 뒤의 공백 제거
+        console.log(str.split('')) // 한글자씩 끊어서 배열 저장
+        console.log(str.split(' ')) // 단어 기준으로 끊어서 배열 저장
+        console.log(str.split('a')) // a 문자열 기준으로 끊어서 배열 저장
+        console.log(str.split('\n')) // enter 기분으로 끊어서 배열 저장
+    </script>
+
+    <script>
+        let days = ['월', '화', '수'];
+        days.push = '목';
+        console.log(days)
+        
+    </script>
+</body>
+</html>
