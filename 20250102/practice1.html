@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- jQuery 사용하기 -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./practice1.css" />
+</head>
+<body>
+    <div class="wrap">
+        <img src="../imgs/sample.jpg" alt="" width="400px" height="400px"/>
+        <div class="btns">
+            <!-- css flex로 정렬 -->
+            <div onclick="changeImg('사과')" class="fruit">사과</div>
+            <div onclick="changeImg('바나나')" class="fruit">바나나</div>
+            <div onclick="changeImg('포도')" class="fruit">포도</div>
+            <div onclick="changeImg('복숭아')" class="fruit">복숭아</div>
+        </div>
+    </div>
+</body>
+<script>
+    const changeImg = (type) => {
+        if(type === '사과'){
+          document.querySelector('img').src = "../imgs/Apple.jpg";
+        }
+        else if(type === '바나나'){
+            document.querySelector('img').src = "../imgs/banana.jpeg";
+        }
+        else if(type === '포도'){
+            document.querySelector('img').src = "../imgs/grape.jpg";
+        }
+        else{
+            document.querySelector('img').src = "../imgs/peach.jpeg";
+        }
+    };
+</script>
+</html>

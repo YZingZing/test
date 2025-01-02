@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 계산기 만들기 -->
+    <div class="form">
+        값1: <input type="text" id="data1" /><br />
+        값2: <input type="text" id="data2" /><br />
+        연산자: <input type="text" id="operation" /><br />
+        결과: <input type="text" id="result" /><br /><br />
+        <button onclick="calc()">계산하기</button>
+        <button onclick="init()">초기화</button>
+    </div>
+</body>
+<script>
+    function calc(){
+        const num1 = Number(document.getElementById("data1").value);
+        const num2 = Number(document.getElementById("data2").value);
+        const op = document.getElementById("operation").value;
+        let result = 0;
+
+        if(op === '+'){
+            result = num1 + num2;
+        }
+        else if(op === '-'){
+            result = num1 - num2;
+        }
+        else if(op === '*'){
+            result = num1 * num2;
+        }
+        else if(op === '/'){
+            result = num1 / num2;
+        }
+
+        document.getElementById("result").value = result;
+    }
+
+    function init(){
+        document.getElementById("data1").value = '';
+        document.getElementById("data2").value = '';
+        document.getElementById("operation").value = '';
+        document.getElementById("result").value = '';
+    }
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 메소드 체이닝 기법
+        const hello = 'hello';
+        hello.split('').reverse().join('').toUpperCase()
+        // hello.split('') 결과값은 [h e l l o] 배열 생성됨
+        // join은 배열을 문자열로 변경 (olleh 문자열 생성)
+    </script>
+
+    <script>
+        let numbers = [1, 2, 3, 4, 5, 6];
+        let fruits = ["사과", "바나나", "수박", "포도", "파인애플"];
+        // 배열을 탐색할 수 있도록 도와주는 함수
+        fruits.forEach((fruit, i, arr) => {
+            console.log(fruit, i, arr);
+        });
+
+        // 배열을 탐색하면서 원하는 조건에 부합한 원소 반환 (반환값은 배열임)
+        const filterArr = numbers.filter((num, i, arr)=>{return num%2 === 0});
+        console.log(filterArr)
+        const filterArr2 = numbers.filter((num) => num%2 === 0) // 같은방식임
+    </script>
+</body>
+</html>

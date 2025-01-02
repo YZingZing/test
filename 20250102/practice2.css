@@ -1,0 +1,35 @@
+.wrap{
+    max-width: 1280px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 10px;
+    vertical-align: top;
+    cursor: pointer;
+}
+th {
+    background-color: #f4f4f4;
+}
+.sunday {
+    color: red;
+}
+.saturday {
+    color: blue;
+}
+.note {
+    font-size: 0.9em;
+    color: #555;
+}
+h1{
+    text-align: center;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./practice2.css" />
+</head>
+<body>
+    <!-- 달력 만들기 -->
+    <div class="wrap">
+        <div class="form">
+            날짜 : <input type="number" class="date" /><br />
+            내용 : <input type="text" class="input" /><br />
+            <button onclick="addNote()">작성</button>
+        </div>
+
+        <div class="form2">
+            <h1>2025년 1월</h1>
+            <div id="calendar"></div>
+        </div>
+
+    </div>
+    
+    <script>
+        function generateCalendar(year, month) {
+            const calendarContainer = document.getElementById('calendar');
+            const daysInWeek = ['日', '月', '火', '水', '木', '金', '土'];
+            const firstDay = new Date(year, month - 1, 1);
+            const lastDay = new Date(year, month, 0);
+            const totalDays = lastDay.getDate();
+            const firstWeekDay = firstDay.getDay();
+    
+            // 테이블 초기화
+            calendarContainer.innerHTML = '';
+    
+            // 테이블 생성
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const tbody = document.createElement('tbody');
+    
+            // 요일 헤더 추가
+            const headerRow = document.createElement('tr');
+            daysInWeek.forEach((day, index) => {
+                const th = document.createElement('th');
+                th.textContent = day;
+    
+                // 스타일 적용: 일요일 빨간색, 토요일 파란색
+                if (index === 0) {
+                    th.classList.add('sunday');
+                } else if (index === 6) {
+                    th.classList.add('saturday');
+                }
+    
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+    
+            // 날짜 추가
+            let currentDay = 1;
+            for (let row = 0; currentDay <= totalDays; row++) {
+                const tr = document.createElement('tr');
+                for (let col = 0; col < 7; col++) {
+                    const td = document.createElement('td');
+                    if (row === 0 && col < firstWeekDay) {
+                        // 첫 주 공백 채우기
+                        td.textContent = '';
+                    } else if (currentDay <= totalDays) {
+                        td.textContent = currentDay;
+                        td.setAttribute('data-day', currentDay); // 날짜 식별용 데이터 속성 추가
+
+                        // 날짜 클릭 이벤트 추가
+                        td.addEventListener('click', () => {
+                            document.querySelector('.date').value = td.getAttribute('data-day');
+                        });
+
+                        // 스타일 적용
+                        if (col === 0) {
+                            td.classList.add('sunday');
+                        } else if (col === 6) {
+                            td.classList.add('saturday');
+                        }
+    
+                        currentDay++;
+                    }
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+    
+            table.appendChild(thead);
+            table.appendChild(tbody);
+            calendarContainer.appendChild(table);
+        }
+
+        function addNote() {
+            const date = document.querySelector('.date').value;
+            const content = document.querySelector('.input').value;
+
+            const dayCell = document.querySelector(`[data-day="${date}"]`);
+            if (dayCell) {
+                // 메모 삭제
+                const delect = dayCell.querySelector('.note');
+                if (delect) {
+                    delect.remove();
+                }
+                // 메모 추가
+                const note = document.createElement('div');
+                note.className = 'note';
+                note.textContent = content;
+                dayCell.appendChild(note);
+            } else {
+                alert('유효한 날짜를 선택하세요!');
+            }
+        }
+    
+        // 2025년 1월 달력 생성
+        generateCalendar(2025, 1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 방명록 만들기 -->
+    <div>방명록입니다.</div><br />
+    <div class="form">
+        작성자 <input type="text" id="user" /><br />
+        내용 <input type="text" id="content" /><br /><br />
+        <button onclick="addComment()">작성</button>
+    </div><br />
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>번호</td>
+            <td>작성자</td>
+            <td>내용<td>
+            <td>작성일</td>
+        </tr>
+    </table>
+</body>
+<script>
+    let num = 1;
+    function addComment(){
+        const user = document.getElementById("user").value;
+        const content = document.getElementById("content").value;
+        const now = new Date();
+          
+        }
+</script>
+</html>
