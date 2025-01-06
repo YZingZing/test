@@ -1,0 +1,33 @@
+.box{
+    height: 80px;
+    background-color: rgb(104, 140, 205);
+}
+
+.box2{
+    display: none;
+}
+
+.background{
+    display: flex;
+    justify-content: center;
+    max-width: 1280px;
+    margin: 0px auto; /* 가운데 정렬 */
+    div{
+        height: 50px;
+        align-content: center;
+    }
+}
+
+.menu{
+    margin: 15px;
+}
+
+@media screen and (max-width:768px){
+    .box2{
+        display: block; 
+        text-align: center;
+       }
+    .background{
+        display: none;
+    }
+}

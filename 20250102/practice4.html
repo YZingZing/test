@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>방명록</title>
 </head>
 <body>
     <!-- 방명록 만들기 -->
@@ -14,22 +14,45 @@
         <button onclick="addComment()">작성</button>
     </div><br />
 
-    <table border="1" cellpadding="10">
-        <tr>
-            <td>번호</td>
-            <td>작성자</td>
-            <td>내용<td>
-            <td>작성일</td>
-        </tr>
+    <table border="1" cellpadding="10" id="guestbook">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
     </table>
-</body>
-<script>
-    let num = 1;
-    function addComment(){
-        const user = document.getElementById("user").value;
-        const content = document.getElementById("content").value;
-        const now = new Date();
-          
+
+    <script>
+        let num = 1; // 번호 카운트 초기값
+        function addComment() {
+            const user = document.getElementById("user").value;
+            const content = document.getElementById("content").value;
+            const now = new Date();
+            const formatNow = `${now.getFullYear()}-${String(now.getMonth() + 1)}-${String(now.getDate())} ${String(now.getHours())} : ${String(now.getMinutes())}`;
+
+            // 테이블 행 추가
+            const tbody = document.querySelector("#guestbook tbody");
+            const newRow = tbody.insertRow(); // 새 행 추가
+
+            // 셀 추가 및 내용 삽입
+            const numCell = newRow.insertCell(0);
+            const userCell = newRow.insertCell(1);
+            const contentCell = newRow.insertCell(2);
+            const dateCell = newRow.insertCell(3);
+
+            numCell.textContent = num++;
+            userCell.textContent = user;
+            contentCell.textContent = content;
+            dateCell.textContent = formatNow;
+
+            // 입력 필드 초기화
+            document.getElementById("user").value = "";
+            document.getElementById("content").value = "";
         }
-</script>
+    </script>
+</body>
 </html>

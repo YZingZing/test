@@ -1,0 +1,52 @@
+/* .text{
+    background-color: red;
+}
+.ham{
+    display: none;
+} */
+
+/* 모바일시에 */
+/* @media screen and (max-width:768px) {
+    .text{
+        font-size: 20px;
+        background-color: blue;
+    }
+    .ham{
+        display: block;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .text{
+        background-color: green;
+    }
+} */
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0px auto; /* 가운데 정렬 */
+    div{
+        height: 400px;
+    }
+}
+
+.left{
+    width: 50%;
+    background-color: red;
+}
+
+.right{
+    width: 50%;
+    background-color: blue;
+}
+
+@media screen and (max-width:768px){
+    .menu{
+        display: block;
+        div{
+            width: 100%;
+        }
+    }
+}
