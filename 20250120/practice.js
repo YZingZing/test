@@ -89,9 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             }
         }
-        if(isDuplicatedID === true){
-            userID.textContent = 'id는 중복 불가입니다.';
-        }
 
         // 별명 중복 방지
         let isDuplicatedNICK = false;
@@ -101,16 +98,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             }
         }
-        if(isDuplicatedNICK === true){
-            userNICKNAME.textContent = '별명은 중복 불가입니다.'
-        }
 
-        // 경력과 별명 길이 제한
-        if(userInfo.career.length < 15){
-            userCAREER.textContent = '경력은 15자 이상이어야 합니다.';
-        }
-        if(userInfo.nickName.length < 2){
-            userNICKNAME.textContent = '별명은 2자 이상이어야 합니다.';
+        if(isDuplicatedID === true || isDuplicatedNICK === true || userInfo.career.length < 15 || userInfo.nickName.length < 2 || Number(userInfo.age) > 150 ){
+            if(isDuplicatedID === true){
+                userID.textContent = 'id는 중복 불가입니다.';
+            } else{
+                userID.textContent = '';
+            }
+
+            if(isDuplicatedNICK === true){
+                userNICKNAME.textContent = '별명은 중복 불가입니다.';
+            } else if(userInfo.nickName.length < 2){
+                userNICKNAME.textContent = '별명은 2자 이상이어야 합니다.';
+            } else{
+                userNICKNAME.textContent = '';
+            }
+
+            if(userInfo.career.length < 15){
+                userCAREER.textContent = '경력은 15자 이상이어야 합니다.';
+            } else{
+                userCAREER.textContent = '';
+            }
+
+            if(Number(userInfo.age) > 150){
+                userAGE.textContent = '나이는 150 이하여야 합니다.';
+            } else{
+                userAGE.textContent = '';
+            }
+
             return;
         }
 
@@ -120,7 +135,20 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('data_map', JSON.stringify(data_map)); 
 
         dataSetting(userInfo);
+
+        console.log(idElement.textContent);
+        
+        // 원상복귀
+        idElement.value = '';
+        nameElement.value = '';
+        ageElement.value = '';
+        careerElement.value = '';
+        nickNameElement.value = '';
+        
+        userID.textContent = '';
+        userNAME.textContent = '';
+        userAGE.textContent = '';
+        userCAREER.textContent = '';
+        userNICKNAME.textContent = '';
     });
 })
-
-
