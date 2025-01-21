@@ -48,9 +48,11 @@ const dataSetting = (userInfo) => {
     const ageTd = document.createElement('td'); // 나이
     const careerTd = document.createElement('td'); // 커리어
     const nickNameTd = document.createElement('td'); // 별명
-
     const modifybtn = document.createElement('button'); // 수정버튼
     const delectbtn = document.createElement('button'); // 삭제버튼
+
+    modifybtn.classList.add('modifybtn');
+    delectbtn.classList.add('delectbtn');
 
     nameTd.innerHTML = userInfo.name;
     ageTd.innerHTML = userInfo.age;
@@ -61,24 +63,57 @@ const dataSetting = (userInfo) => {
     tr.appendChild(ageTd);
     tr.appendChild(careerTd);
     tr.appendChild(nickNameTd);
+    tr.appendChild(modifybtn);
+    tr.appendChild(delectbtn);
 
     tbody.appendChild(tr);
     table.appendChild(tbody);
+
+    modifybtn.innerText = '수정';
+    delectbtn.innerHTML = '삭제';
+    
+    modifybtn.addEventListener('click', btnClick);
+    delectbtn.addEventListener('click', delBtnClick);
+
 };
 
 // 버튼 활성화 함수
 const btnAble = () => {
-    var changeNICK = $('#nickName').val();
-    var changeCAREER = $("#career").val();
-    var changeAGE = $("#age").val();
-    var changeID = $("#id").val();
+    const changeNICK = $('#nickName').val();
+    const changeCAREER = $("#career").val();
+    const changeAGE = $("#age").val();
+    const changeID = $("#id").val();
 
     let isDuplicatedNICK = data_map.some((item) => item.nickName === changeNICK);
     let isDuplicatedID = data_map.some((item) => item.id === changeID);
 
     if(isDuplicatedID === false && isDuplicatedNICK === false && Number(changeAGE) <= 150 && changeCAREER.length >= 15 && changeNICK.length >= 2){
         clickbutton.disabled = false;
+    } else{
+        clickbutton.disabled = true;
     }
+}
+
+// test
+function btnClick(){
+    alert('버튼클릭함수');
+}
+
+// 삭제버튼 클릭 함수
+function delBtnClick() {
+    const delRow = this.closest('tr');
+    const tbody = table.querySelector('tbody');
+
+    console.log('tbody:', tbody);
+    console.log('tbody rows:', tbody.rows.length);
+
+    // if(tbody.rows.length < 2){
+    //     console.log('행 한개라 삭제 불가능')
+    //     return;
+    // }
+
+    console.log('삭제된건가')
+    delRow.remove();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -93,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 별명 글자수, 중복 확인
     $("#nickName").on("propertychange change paste input", function() {
-        var changeNICK = $('#nickName').val();
+        const changeNICK = $('#nickName').val();
         let isDuplicatedNICK = data_map.some((item) => item.nickName === changeNICK);
 
         if(changeNICK.length < 2){
@@ -109,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 경력 확인
     $('#career').on('propertychange change paste input', function() {
-        var changeCAREER = $("#career").val();
+        const changeCAREER = $("#career").val();
 
         if(changeCAREER.length < 15){
             userCAREER.textContent = '경력은 15자 이상이어야 합니다.';
@@ -122,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 나이 확인
     $('#age').on('propertychange change paste input', function() {
-        var changeAGE = $("#age").val();
+        const changeAGE = $("#age").val();
 
         if(Number(changeAGE) > 150){
             userAGE.textContent = '나이는 150 이하여야 합니다.';
@@ -135,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // id 중복 확인
     $('#id').on('propertychange change paste input', function(){
-        var changeID = $("#id").val();
+        const changeID = $("#id").val();
         let isDuplicatedID = data_map.some((item) => item.id === changeID);
 
         if(isDuplicatedID){
@@ -146,8 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         btnAble();
     });
-
-
     
     // 클릭시 저장 및 출력
     clickbutton.addEventListener('click', ()=>{
@@ -179,4 +212,5 @@ document.addEventListener('DOMContentLoaded', () => {
         userCAREER.textContent = '';
         userNICKNAME.textContent = '';
     });
+
 })
