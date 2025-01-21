@@ -38,11 +38,10 @@ tableWrap.appendChild(table);
 // getItem은 아이템 읽어오기, parse는 배열(객체)로 변환
 let data_map = JSON.parse(localStorage.getItem('data_map')) || [];
 
-// 테이블 초기화 함수
-const rendering = (userInfo) => {
+// 테이블에 데이터 넣는 함수
+const dataSetting = (userInfo) => {
     const tbody = document.createElement('tbody');
 
-    // 테이블에 데이터 넣기
     const tr = document.createElement('tr');
     tr.classList.add('tr');
 
@@ -66,6 +65,13 @@ const rendering = (userInfo) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 새로고침 해도 테이블 데이터 값 유지
+    if(data_map){
+        data_map.forEach(userInfo => {
+            dataSetting(userInfo);
+        });
+    };
+
     clickbutton.addEventListener('click', ()=>{
         let userInfo = {
             id: idElement.value,
@@ -75,12 +81,45 @@ document.addEventListener('DOMContentLoaded', () => {
             nickName: nickNameElement.value
         }
 
+        // id 중복 방지
+        let isDuplicatedID = false;
+        for(let i=0; i<data_map.length; i++){
+            if(data_map[i].id === userInfo.id){
+                isDuplicatedID = true;
+                break;
+            }
+        }
+        if(isDuplicatedID === true){
+            userID.textContent = 'id는 중복 불가입니다.';
+        }
+
+        // 별명 중복 방지
+        let isDuplicatedNICK = false;
+        for(let i=0; i<data_map.length; i++){
+            if(data_map[i].nickName === userInfo.nickName){
+                isDuplicatedNICK = true;
+                break;
+            }
+        }
+        if(isDuplicatedNICK === true){
+            userNICKNAME.textContent = '별명은 중복 불가입니다.'
+        }
+
+        // 경력과 별명 길이 제한
+        if(userInfo.career.length < 15){
+            userCAREER.textContent = '경력은 15자 이상이어야 합니다.';
+        }
+        if(userInfo.nickName.length < 2){
+            userNICKNAME.textContent = '별명은 2자 이상이어야 합니다.';
+            return;
+        }
+
         data_map.push(userInfo);
 
         // stringify는 문자열로 변환, setItem은 로컬스토리지에 아이템 추가
         localStorage.setItem('data_map', JSON.stringify(data_map)); 
 
-        rendering(userInfo);
+        dataSetting(userInfo);
     });
 })
 
