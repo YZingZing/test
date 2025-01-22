@@ -15,66 +15,50 @@ const userNICKNAME = document.getElementById('userNICKNAME');
 
 // 테이블 생성
 const tableWrap = document.querySelector('.main-wrap');
-const table = document.createElement('table');
-table.classList.add('table');
-
-const headers = ['이름', '나이', '경력', '별명', '관리']; // 테이블 헤더에 id 제거
-const thead = document.createElement('thead');
-thead.classList.add('th');
-const headerRow = document.createElement('tr');
-
-// 헤더 이름 넣기
-headers.forEach(headerText => {
-    const th = document.createElement('th');
-    th.textContent = headerText;
-    headerRow.appendChild(th);
-});
-    
-thead.appendChild(headerRow);
-table.appendChild(thead);
-tableWrap.appendChild(table);
+tableWrap.innerHTML = ` 
+<table>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th>나이</th>
+        <th>커리어</th>
+        <th>별명</th>
+        <th>관리</th>
+      </tr>
+    </thead>
+    <tbody class="tbody"></tbody>
+</table> `;
 
 // getItem은 아이템 읽어오기, parse는 배열(객체)로 변환
 let data_map = JSON.parse(localStorage.getItem('data_map')) || [];
 
 // 테이블에 데이터 넣는 함수
-const dataSetting = (userInfo) => {
-    const tbody = document.createElement('tbody');
+const dataSetting = () => {
+    const tbody = document.querySelector('tbody');
+    tbody.innerHTML = data_map
+    .map((item, index) => {
+        return `
+        <tr>
+            <td><div class="inputName">${item.name}</div></td>
+            <td><div class="inputAge">${item.age}</div></td>
+            <td><div class="career">${item.career}</div></td>
+            <td><div class="inputNickname">${item.nickName}</div></td>
+            <td>
+            <button class="modifybtn" index="${index}">수정</button>
+            <button class="delectbtn" index="${index}">삭제</button>
+            </td>
+        </tr>
+        `;
+    })
+    .join("");
 
-    const tr = document.createElement('tr');
-    tr.classList.add('tr');
-
-    const nameTd = document.createElement('td'); // 이름
-    const ageTd = document.createElement('td'); // 나이
-    const careerTd = document.createElement('td'); // 커리어
-    const nickNameTd = document.createElement('td'); // 별명
-    const modifybtn = document.createElement('button'); // 수정버튼
-    const delectbtn = document.createElement('button'); // 삭제버튼
-
-    modifybtn.classList.add('modifybtn');
-    delectbtn.classList.add('delectbtn');
-
-    nameTd.innerHTML = userInfo.name;
-    ageTd.innerHTML = userInfo.age;
-    careerTd.innerHTML = userInfo.career;
-    nickNameTd.innerHTML = userInfo.nickName;
-
-    tr.appendChild(nameTd);
-    tr.appendChild(ageTd);
-    tr.appendChild(careerTd);
-    tr.appendChild(nickNameTd);
-    tr.appendChild(modifybtn);
-    tr.appendChild(delectbtn);
-
-    tbody.appendChild(tr);
-    table.appendChild(tbody);
-
-    modifybtn.innerHTML = '수정';
-    delectbtn.innerHTML = '삭제';
-    
-    modifybtn.addEventListener('click', modBtnClick);
-    delectbtn.addEventListener('click', delBtnClick);
-
+    // 수정 및 삭제 버튼 이벤트 리스너 추가
+    document.querySelectorAll('.modifybtn').forEach((btn) =>
+        btn.addEventListener('click', modBtnClick)
+    );
+    document.querySelectorAll('.delectbtn').forEach((btn) =>
+        btn.addEventListener('click', delBtnClick)
+    );
 };
 
 // 버튼 활성화 함수
@@ -94,19 +78,34 @@ const btnAble = () => {
     }
 }
 
-// 수정버튼 클릭함수 테스트
-function modBtnClick(event){
-    const btn2 = event.target;
-    const li2 = btn.closest('tr');
+// 수정버튼 이름 바꾸는 함수
+function modBtnChange(){
+    const modifybtn = document.querySelector('.modifybtn');
+    if(modifybtn.innerText = '수정'){
+        console.log('바뀌어라얍')
+        modifybtn.innerText = '수정완료'
+    }
 }
 
-// 삭제버튼 클릭함수 테스트
+// 수정버튼 클릭 함수
+function modBtnClick(event){
+    modBtnChange();
+    const btn2 = event.target;
+    const li2 = btn2.closest('tr');
+
+    // 로컬스토리지에 다시 저장
+    // localStorage.setItem('data_map', JSON.stringify(data_map));
+}
+
+// 삭제버튼 클릭 함수
 function delBtnClick(event){
     const btn = event.target;
     const li = btn.closest('tr');
+    const nameCheck = li.querySelector('.inputName').innerHTML;
     li.remove();
 
-    data_map = data_map.filter((result) => result.name !== li.cells[0].innerHTML);
+    data_map = data_map.filter((result) => result.name !== nameCheck);
+    console.log(data_map);
 
     // 로컬스토리지에 다시 저장
     localStorage.setItem('data_map', JSON.stringify(data_map)); 
@@ -114,11 +113,9 @@ function delBtnClick(event){
 
 document.addEventListener('DOMContentLoaded', () => {
     // 새로고침 해도 테이블 데이터 값 유지
-    if(data_map){
-        data_map.forEach(userInfo => {
-            dataSetting(userInfo);
-        });
-    };
+    if (data_map.length > 0) {
+        dataSetting();
+    }
 
     clickbutton.disabled = true;
 
@@ -167,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // id 중복 확인
     $('#id').on('propertychange change paste input', function(){
         const changeID = $("#id").val();
+        console.log('왜안떠?')
         let isDuplicatedID = data_map.some((item) => item.id === changeID);
 
         if(isDuplicatedID){
@@ -192,8 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // stringify는 문자열로 변환, setItem은 로컬스토리지에 아이템 추가
         localStorage.setItem('data_map', JSON.stringify(data_map)); 
-    
-        dataSetting(userInfo);
+        dataSetting();
     
         // 원상복귀
         idElement.value = '';
