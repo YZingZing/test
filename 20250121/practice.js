@@ -69,10 +69,10 @@ const dataSetting = (userInfo) => {
     tbody.appendChild(tr);
     table.appendChild(tbody);
 
-    modifybtn.innerText = '수정';
+    modifybtn.innerHTML = '수정';
     delectbtn.innerHTML = '삭제';
     
-    modifybtn.addEventListener('click', btnClick);
+    modifybtn.addEventListener('click', modBtnClick);
     delectbtn.addEventListener('click', delBtnClick);
 
 };
@@ -94,26 +94,22 @@ const btnAble = () => {
     }
 }
 
-// test
-function btnClick(){
-    alert('버튼클릭함수');
+// 수정버튼 클릭함수 테스트
+function modBtnClick(event){
+    const btn2 = event.target;
+    const li2 = btn.closest('tr');
 }
 
-// 삭제버튼 클릭 함수
-function delBtnClick() {
-    const delRow = this.closest('tr');
-    const tbody = table.querySelector('tbody');
+// 삭제버튼 클릭함수 테스트
+function delBtnClick(event){
+    const btn = event.target;
+    const li = btn.closest('tr');
+    li.remove();
 
-    console.log('tbody:', tbody);
-    console.log('tbody rows:', tbody.rows.length);
+    data_map = data_map.filter((result) => result.name !== li.cells[0].innerHTML);
 
-    // if(tbody.rows.length < 2){
-    //     console.log('행 한개라 삭제 불가능')
-    //     return;
-    // }
-
-    console.log('삭제된건가')
-    delRow.remove();
+    // 로컬스토리지에 다시 저장
+    localStorage.setItem('data_map', JSON.stringify(data_map)); 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -211,6 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
         userAGE.textContent = '';
         userCAREER.textContent = '';
         userNICKNAME.textContent = '';
+
+        clickbutton.disabled = true;
     });
 
 })
