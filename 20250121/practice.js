@@ -41,7 +41,7 @@ const dataSetting = () => {
         <tr>
             <td><div class="inputName">${item.name}</div></td>
             <td><div class="inputAge">${item.age}</div></td>
-            <td><div class="career">${item.career}</div></td>
+            <td><div class="career">${item.career}</div><span class="span${item.id}"></span></td>
             <td><div class="inputNickname">${item.nickName}</div></td>
             <td>
             <button class="modifybtn" index="${index}">수정</button>
@@ -78,23 +78,47 @@ const btnAble = () => {
     }
 }
 
-// 수정버튼 이름 바꾸는 함수
-function modBtnChange(){
-    const modifybtn = document.querySelector('.modifybtn');
-    if(modifybtn.innerText = '수정'){
-        console.log('바뀌어라얍')
-        modifybtn.innerText = '수정완료'
-    }
-}
-
 // 수정버튼 클릭 함수
 function modBtnClick(event){
-    modBtnChange();
     const btn2 = event.target;
     const li2 = btn2.closest('tr');
+    const careerTd = li2.querySelector('.career');
+    const inputSpan = careerTd.querySelector('span');
+    const index = btn2.getAttribute('index');
+    // const inputSpan = careerTd.querySelector(`.span${li2.getAttribute('item-id')}`); // 조건출력 span 부분
+    console.log("스팬임",inputSpan)
 
-    // 로컬스토리지에 다시 저장
-    // localStorage.setItem('data_map', JSON.stringify(data_map));
+    if(btn2.innerText === '수정'){
+        const careerOrigin = careerTd.textContent; // 기존 경력값 저장
+        console.log('커리어 내용 맞니 ', careerOrigin)
+    
+        // input 태그 생성
+        careerTd.innerHTML = `<input class="newCareer" type="text" value="${careerOrigin}">
+        <br><span class="span${data_map[index].id}"></span>
+        `;
+
+        btn2.innerText = '수정완료';
+    }
+    else{
+        const inputTag = careerTd.querySelector('.newCareer');
+        const careerChange = inputTag.value.trim(); // 수정된 입력값 가져오기
+        console.log('길이확인하장 ', careerChange.length)
+
+        if(careerChange.length < 15){
+            inputSpan.innerHTML = '경력 최소 15자 이상';
+            return;
+        }
+
+        // 경력 업데이트
+        inputSpan.innerHTML = `${careerChange}<span class="span${data_map[index].id}"></span>`;
+        btn2.innerText = '수정';
+        inputSpan.textContent = '';
+
+        // 로컬스토리지에 다시 저장
+        data_map[index].career = careerChange;
+        localStorage.setItem('data_map', JSON.stringify(data_map));
+        // dataSetting();
+    }
 }
 
 // 삭제버튼 클릭 함수
