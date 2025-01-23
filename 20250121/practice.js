@@ -107,12 +107,13 @@ function modBtnClick(event){
         if(careerChange.length < 15){
             inputSpan.innerHTML = '경력 최소 15자 이상';
             return;
+        }else{
+            inputSpan.textContent = '';
         }
 
         // 경력 업데이트
-        inputSpan.innerHTML = `${careerChange}<span class="span${data_map[index].id}"></span>`;
+        careerTd.innerHTML = careerChange;
         btn2.innerText = '수정';
-        inputSpan.textContent = '';
 
         // 로컬스토리지에 다시 저장
         data_map[index].career = careerChange;
