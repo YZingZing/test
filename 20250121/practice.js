@@ -39,10 +39,10 @@ const dataSetting = () => {
     .map((item, index) => {
         return `
         <tr>
-            <td><div class="inputName">${item.name}</div></td>
-            <td><div class="inputAge">${item.age}</div></td>
+            <td><div class="name">${item.name}</div><span class="span${item.id}"></span></td>
+            <td><div class="age">${item.age}</div><span class="span${item.id}"></span></td>
             <td><div class="career">${item.career}</div><span class="span${item.id}"></span></td>
-            <td><div class="inputNickname">${item.nickName}</div></td>
+            <td><div class="nickname">${item.nickName}</div></td>
             <td>
             <button class="modifybtn" index="${index}">수정</button>
             <button class="delectbtn" index="${index}">삭제</button>
@@ -82,43 +82,88 @@ const btnAble = () => {
 function modBtnClick(event){
     const btn2 = event.target;
     const li2 = btn2.closest('tr');
+
     const careerTd = li2.querySelector('.career');
-    const inputSpan = careerTd.querySelector('span');
+    const ageTd = li2.querySelector('.age');
+    const nameTd = li2.querySelector('.name');
+
+
     const index = btn2.getAttribute('index');
-    // const inputSpan = careerTd.querySelector(`.span${li2.getAttribute('item-id')}`); // 조건출력 span 부분
-    console.log("스팬임",inputSpan)
 
     if(btn2.innerText === '수정'){
-        const careerOrigin = careerTd.textContent; // 기존 경력값 저장
-        console.log('커리어 내용 맞니 ', careerOrigin)
+        const careerOrigin = careerTd.textContent; // 기존 커리어값 저장
+        const ageOrigin = ageTd.textContent; // 기존 나이값 지정
+        const nameOrigin = nameTd.textContent; // 기존 이름값 저장
     
         // input 태그 생성
-        careerTd.innerHTML = `<input class="newCareer" type="text" value="${careerOrigin}">
-        <br><span class="span${data_map[index].id}"></span>
+        careerTd.innerHTML = `
+            <input class="newCareer" type="text" value="${careerOrigin}">
+            <br><span class="span${data_map[index].id}"></span>
         `;
+        ageTd.innerHTML = `
+            <input class="newAge" type="number" value="${ageOrigin}">
+            <br><span class="span${data_map[index].id}"></span>
+        `;
+        nameTd.innerHTML = `
+            <input class="newName" type="text" value="${nameOrigin}">
+            <br><span class="span${data_map[index].id}"></span>
+        `;
+
+        const inputTag = careerTd.querySelector('.newCareer');
+        const liveSpan = careerTd.querySelector('span'); // 커리어 span
+        
+        const inputTag2 = ageTd.querySelector('.newAge');
+        const liveSpan2 = ageTd.querySelector('span'); // 나이 span
+
+        const inputTag3 = nameTd.querySelector('.newName');
+        const liveSpan3 = nameTd.querySelector('span'); // 이름 span
+
+        // 실시간 입력 데이터 확인 (커리어)
+        inputTag.addEventListener('input', () => {
+            if (inputTag.value.length < 15) {
+                liveSpan.textContent = '경력 최소 15자 이상';
+            } else {
+                liveSpan.textContent = inputTag.value; 
+            }
+        });
+
+        // 실시간 입력 데이터 확인 (나이)
+        inputTag2.addEventListener('input', () => {
+            if(Number(inputTag2.value) > 150){
+                liveSpan2.textContent = '나이는 150 이하여야 합니다.';
+            } else {
+                liveSpan2.textContent = inputTag2.value;
+            }
+        });
 
         btn2.innerText = '수정완료';
     }
     else{
         const inputTag = careerTd.querySelector('.newCareer');
-        const careerChange = inputTag.value.trim(); // 수정된 입력값 가져오기
+        const inputTag2 = ageTd.querySelector('.newAge');
+        const inputTag3 = nameTd.querySelector('.newName')
+
+        const careerChange = inputTag.value.trim(); // 수정된 입력값 가져오기 (커리어)
+        const ageChange = inputTag2.value.trim(); // 수정된 입력값 가져오기 (나이)
+        const nameChange = inputTag3.value.trim(); // 수정된 입력값 가져오기 (이름)
+
         console.log('길이확인하장 ', careerChange.length)
 
         if(careerChange.length < 15){
-            inputSpan.innerHTML = '경력 최소 15자 이상';
             return;
-        }else{
-            inputSpan.textContent = '';
         }
 
-        // 경력 업데이트
+        // 업데이트
         careerTd.innerHTML = careerChange;
+        ageTd.innerHTML = ageChange;
+        nameTd.innerHTML = nameChange;
         btn2.innerText = '수정';
 
         // 로컬스토리지에 다시 저장
         data_map[index].career = careerChange;
+        data_map[index].age = ageChange;
+        data_map[index].name = nameChange;
         localStorage.setItem('data_map', JSON.stringify(data_map));
-        // dataSetting();
     }
 }
 
@@ -126,7 +171,7 @@ function modBtnClick(event){
 function delBtnClick(event){
     const btn = event.target;
     const li = btn.closest('tr');
-    const nameCheck = li.querySelector('.inputName').innerHTML;
+    const nameCheck = li.querySelector('.name').innerHTML;
     li.remove();
 
     data_map = data_map.filter((result) => result.name !== nameCheck);
@@ -189,7 +234,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // id 중복 확인
     $('#id').on('propertychange change paste input', function(){
         const changeID = $("#id").val();
-        console.log('왜안떠?')
         let isDuplicatedID = data_map.some((item) => item.id === changeID);
 
         if(isDuplicatedID){
