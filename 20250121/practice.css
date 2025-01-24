@@ -32,10 +32,12 @@ body {
     border: 1px solid #ccc;
     border-radius: 6px;
     box-sizing: border-box;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .input-wrap input:focus {
     outline: none;
+    border-color: #2363a8;
     box-shadow: 0 0 8px rgba(35, 99, 168, 0.5);
 }
 
@@ -55,7 +57,7 @@ body {
 }
 
 .input-wrap button:hover {
-    /* background-color: #1a1b1c; */
+    background-color: #1d4d82;
 }
 
 .input-wrap button:disabled {
@@ -73,35 +75,58 @@ body {
     overflow-x: auto; /* 작은 화면에서 가로 스크롤 가능 */
 }
 
-.table {
+table {
     width: 100%;
     border-collapse: collapse;
     background-color: #ffffff;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.table thead {
+thead {
     background-color: #2363a8;
     color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.table th,
-.table td {
+th,
+td {
     padding: 16px;
     border: 1px solid #ddd;
     text-align: center;
     font-size: 16px;
 }
 
-.table tr:nth-child(even) {
-    background-color: #f7f9fb;
-}
-
-.table tr:hover {
+tbody tr:hover {
     background-color: #eef2f7;
 }
 
-.tr {
+th {
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+td {
+    word-wrap: break-word;
+    white-space: normal;
+    vertical-align: middle;
+}
+
+tr {
     transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    th,
+    td {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .input-wrap,
+    .main-wrap {
+        padding: 20px;
+    }
 }

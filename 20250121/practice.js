@@ -119,22 +119,31 @@ function modBtnClick(event){
         const liveSpan3 = nameTd.querySelector('span'); // 이름 span
 
         // 실시간 입력 데이터 확인 (커리어)
-        inputTag.addEventListener('input', () => {
+        inputTag.addEventListener('input', () =>{
             if (inputTag.value.length < 15) {
-                liveSpan.textContent = '경력 최소 15자 이상';
+                liveSpan.textContent = '경력 최소 15자 이상이어야 합니다.';
             } else {
                 liveSpan.textContent = inputTag.value; 
             }
         });
 
         // 실시간 입력 데이터 확인 (나이)
-        inputTag2.addEventListener('input', () => {
+        inputTag2.addEventListener('input', () =>{
             if(Number(inputTag2.value) > 150){
                 liveSpan2.textContent = '나이는 150 이하여야 합니다.';
             } else {
                 liveSpan2.textContent = inputTag2.value;
             }
         });
+
+        // 실시간 입력 데이터 확인 (이름)
+        inputTag3.addEventListener('input', () =>{
+            if(inputTag3.value === ''){
+                liveSpan3.textContent = '빈칸은 불가능합니다.';
+            } else {
+                liveSpan3.textContent = inputTag3.value;
+            }
+        })
 
         btn2.innerText = '수정완료';
     }
@@ -149,7 +158,7 @@ function modBtnClick(event){
 
         console.log('길이확인하장 ', careerChange.length)
 
-        if(careerChange.length < 15){
+        if(careerChange.length < 15 || Number(ageChange) > 150 || nameChange === ''){
             return;
         }
 
