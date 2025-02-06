@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <img class="img" src="../imgs/sample.jpg" width="200px" height="200px">
+        <button class="btn1">사과</buttzon>
+        <button class="btn2">바나나</button>
+        <button class="btn3">포도</button>
+        <button class="btn4">복숭아</button>
+    </div>
+</body>
+<script>
+    const img = document.querySelector('.img');
+
+    const btn1 = document.querySelector('.btn1');
+    const btn2 = document.querySelector('.btn2');
+    const btn3 = document.querySelector('.btn3');
+    const btn4 = document.querySelector('.btn4');
+    
+    btn1.addEventListener('click', () =>{
+        img.src="../imgs/Apple.jpg"
+    });
+
+    btn2.addEventListener('click', () =>{
+        img.src="../imgs/banana.jpeg"
+    });
+
+    btn3.addEventListener('click', () =>{
+        img.src="../imgs/grape.jpg"
+    });
+
+    btn4.addEventListener('click', () =>{
+        img.src="../imgs/peach.jpeg"
+    });
+    
+
+</script>
+</html>
